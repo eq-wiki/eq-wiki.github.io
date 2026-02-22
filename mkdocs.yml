@@ -1,0 +1,36 @@
+site_name: Eq Wiki
+site_url: https://eq-wiki.github.io
+repo_url: https://github.com/eq-desktop
+site_author: Eq Desktop
+
+extra_css:
+  - css/images.css
+
+theme:
+  name: shadcn
+  custom_dir: 'custom_theme/'
+  show_stargazers: false
+  show_title: true
+  show_datetime: true
+  topbar: true
+  nav:
+    - title: About
+      link: about/
+  #topbar_sections: true
+  icon: assets/eqsh.svg
+  pygments_style: 
+    light: shadcn-light
+    dark: github-dark
+
+use_directory_urls: true
+markdown_extensions:
+  - admonition
+  - fenced_code
+  - codehilite
+  - attr_list
+  - pymdownx.blocks.tab
+  - pymdownx.blocks.details
+  - pymdownx.blocks.caption
+  - pymdownx.tasklist
+  - toc:
+      permalink: true

@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+set -Eeuo pipefail
+
+REPO_URL="https://github.com/eq-desktop/cli.git"
+REPO_NAME="cli"
+
+log() { printf "\033[1;32m[+] %s\033[0m\n" "$*"; }
+err() { printf "\033[1;31m[!] %s\033[0m\n" "$*" >&2; }
+die() { err "$*"; exit 1; }
+
+command -v git >/dev/null || die "git is required"
+
+tmp="$(mktemp -d)"
+trap 'rm -rf "$tmp"' EXIT
+
+log "Cloning repository"
+git clone --depth=1 "$REPO_URL" "$tmp/$REPO_NAME"
+
+cd "$tmp/$REPO_NAME"
+
+[ -x install.sh ] || die "install.sh not found or not executable"
+
+log "Running installer"
+./install.sh
+
+aureli install
+
+log "Installation complete"
