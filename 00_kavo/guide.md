@@ -109,6 +109,7 @@ Validate is a special macro that lets you validate your data and has a special s
     radius is number or string // can be a number or a string
     :> "Radius must be a number, but was: {radius.type}"
 
+    rule NegativeRadius:
     radius >= 0 // must be positive
     :> "Radius must be positive, but was: {radius.value}"
 }
